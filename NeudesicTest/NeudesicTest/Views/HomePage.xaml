@@ -10,30 +10,18 @@
               HorizontalOptions="FillAndExpand"
               VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.9*"/>
+               
             </Grid.RowDefinitions>
-            <Label Text="fghjkjhgfghjkjhg"/>
-            
-            <!--<ffimageloading:CachedImage  IsVisible="{Binding ShowImage,Mode=TwoWay}" Grid.Row="0"
-                   HeightRequest="500" WidthRequest="500"     Source="{Binding PicUrl,Mode=TwoWay}"
-                            LoadingPlaceholder= "LoaderImage"
-                        ErrorPlaceholder= "ErrorImage"
-                        CacheDuration= "50"
-                        RetryCount= "3"
-                        RetryDelay= "600"
-                        DownsampleToViewSize = "true"
-/>-->
-            <ScrollView VerticalOptions="FillAndExpand"
+            <Label Text="Countries" HorizontalOptions="Center" FontSize="22" TextColor="Orange"/>
+            <BoxView BackgroundColor="Gray" HeightRequest="3" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                     <ScrollView VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="5,0,5,0" Grid.Row="1"
-                    Grid.RowSpan="3">
+                  >
                 <ListView
-          VerticalScrollBarVisibility="Never"
-                          x:Name="PasswordsLists"
+                          x:Name="CountriesList"
                 BackgroundColor="White"
 
                 VerticalOptions="StartAndExpand"
@@ -44,45 +32,55 @@
                             SeparatorVisibility="Default"
                             SeparatorColor="Red"
              
-                ItemsSource="{Binding PasswordsList}"
+                ItemsSource="{Binding CountriesList,Mode=TwoWay}"
                          >
 
 
                     <ListView.ItemTemplate  >
                         <DataTemplate>
                             <ViewCell >
-                              
+                                <Grid  Padding="10,3,10,3"
+                                      Margin="10,5,10,5"
+                                      BackgroundColor="White"
+                                      RowSpacing="0">
 
-
-
-                                    <Grid  Padding="10,3,10,3"  Margin="10,5,10,5" BackgroundColor="White"
-                                              RowSpacing="0">
-
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ffimageloading:CachedImage  IsVisible="True" 
+                     Grid.Column="0"
+                                        HeightRequest="90"
+                                        WidthRequest="90"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                        Source="{Binding FlagUrl,Mode=TwoWay}"  
+                            LoadingPlaceholder= "LoaderImage"
+                        ErrorPlaceholder= "ErrorImage"
+                        CacheDuration= "50"
+                        RetryCount= "3" 
+                        RetryDelay= "200"
+                        DownsampleToViewSize = "true"
+/>
+                                   
+                                    <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="0.33*"/>
-                                            <RowDefinition Height="0.33*"/>
-                                            <RowDefinition Height="0.33*"/>
+                                            <RowDefinition Height="0.5*"/>
+                                            <RowDefinition Height="0.5*"/>
                                         </Grid.RowDefinitions>
-
                                         <Label Grid.Row="0" 
                                                   
                                                    VerticalOptions="CenterAndExpand"
                                                    HorizontalOptions="FillAndExpand"
-                                                   TextColor="#6E6E6E" 
-                                                  
-                                                   FontSize="14">
+                                                   
+                                                   TextColor="Black"
+                                                   FontSize="20">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Password Name"/>
-                                                    <Span Text="  :  "/>
-                                                    <Span Text="{Binding PasswordName}"/>
+                                                    <Span Text="{Binding Name}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-
-
-
-
                                         <Label Grid.Row="1" 
                                                    
                                                    VerticalOptions="CenterAndExpand"
@@ -92,33 +90,14 @@
                                                    FontSize="14">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Login Credential"/>
-                                                    <Span Text=" : "/>
-                                                    <Span Text="{Binding LoginCredential}"/>
+                                                    <Span Text="{Binding Capital}"/>
+                                                    <Span Text="  "/>
+                                                    <Span Text="{Binding Currency}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-
-
-                                        <Label  Grid.Row="2" 
-                                                    
-                                                    HorizontalOptions="StartAndExpand"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Start"
-                                                    TextColor="#6E6E6E" 
-                                                    FontSize="12">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Creation Date"/>
-                                                    <Span Text=" : "/>
-                                                    <Span Text="{Binding Date}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-
-
                                     </Grid>
-
+                                </Grid>
 
                             </ViewCell>
                         </DataTemplate>
@@ -128,15 +107,7 @@
             </ScrollView>
 
 
-            <Label Grid.Row="1" HorizontalOptions="Center"
-                   VerticalOptions="End" FontSize="24" TextColor="White" FontAttributes="Bold"
-                   Text="Please Enter Profile Url"/>
-
-            <Button TextColor="Orange" FontSize="24"
-                BorderWidth="3" BorderColor="SkyBlue" CornerRadius="10"
-                    Grid.Row="3" BackgroundColor="Transparent"
-                Command="{Binding OpenProfile}" Text="Get Profile Picture"
-                HorizontalOptions="Center" VerticalOptions="Center"/>
+          
         </Grid>
 
     </mvx:MvxContentView>

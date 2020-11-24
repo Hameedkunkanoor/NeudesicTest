@@ -11,8 +11,8 @@ namespace NeudesicTest.Services
         public RestService()
         {
             client = new HttpClient(new System.Net.Http.HttpClientHandler());
-            client.MaxResponseContentBufferSize = 256000;
-            client.Timeout = TimeSpan.FromSeconds(25);
+            client.MaxResponseContentBufferSize = 20000000;
+            client.Timeout = TimeSpan.FromSeconds(45);
 
         }
         const int _downloadImageTimeoutInSeconds = 15;

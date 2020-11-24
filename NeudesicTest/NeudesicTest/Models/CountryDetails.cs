@@ -78,47 +78,47 @@ namespace NeudesicTest.Models
         public string Cioc { get; set; }
     }
 
-    public partial class Currency
-    {
-        [JsonProperty("code")]
-        public string Codes { get; set; }
+    //public partial class Currency
+    //{
+    //    [JsonProperty("codee")]
+    //    public string Codes { get; set; }
 
-        [JsonProperty("name")]
-        public string Namee { get; set; }
+    //    [JsonProperty("namee")]
+    //    public string Namee { get; set; }
 
-        [JsonProperty("symbol")]
-        public string Symboll { get; set; }
-    }
+    //    [JsonProperty("symboll")]
+    //    public string Symboll { get; set; }
+    //}
 
-    public partial class Language
-    {
-        [JsonProperty("iso639_1")]
-        public string lIso6391 { get; set; }
+    //public partial class Language
+    //{
+    //    [JsonProperty("iso639_1")]
+    //    public string lIso6391 { get; set; }
 
-        [JsonProperty("iso639_2")]
-        public string lIso6392 { get; set; }
+    //    [JsonProperty("iso639_2")]
+    //    public string lIso6392 { get; set; }
 
-        [JsonProperty("name")]
-        public string lName { get; set; }
+    //    [JsonProperty("name")]
+    //    public string lName { get; set; }
 
-        [JsonProperty("nativeName")]
-        public string lNativeName { get; set; }
-    }
+    //    [JsonProperty("nativeName")]
+    //    public string lNativeName { get; set; }
+    //}
 
-    public partial class RegionalBloc
-    {
-        [JsonProperty("acronym")]
-        public string rAcronym { get; set; }
+    //public partial class RegionalBloc
+    //{
+    //    [JsonProperty("acronym")]
+    //    public string rAcronym { get; set; }
 
-        [JsonProperty("name")]
-        public string RName { get; set; }
+    //    [JsonProperty("name")]
+    //    public string RName { get; set; }
 
-        [JsonProperty("otherAcronyms")]
-        public object[] ROtherAcronyms { get; set; }
+    //    [JsonProperty("otherAcronyms")]
+    //    public object[] ROtherAcronyms { get; set; }
 
-        [JsonProperty("otherNames")]
-        public object[] ROtherNames { get; set; }
-    }
+    //    [JsonProperty("otherNames")]
+    //    public object[] ROtherNames { get; set; }
+    //}
 
     //public partial class Translations
     //{

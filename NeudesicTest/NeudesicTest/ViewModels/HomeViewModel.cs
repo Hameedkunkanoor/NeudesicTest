@@ -6,6 +6,9 @@ using NeudesicTest.Services;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using Xamarin.Essentials;
+using NeudesicTest.Models;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace NeudesicTest.ViewModels
 {
@@ -18,92 +21,67 @@ namespace NeudesicTest.ViewModels
             restService = new RestService();
             this.navigationService = navigationService;
             getData = new GetData();
-            CloseImage = new Command(CloseImagePopup);
-            DontClose = new Command(DontCloseImagePopup);
-            //CrossDownloadManager.Current.CollectionChanged += (sender, e) =>
-            //  System.Diagnostics.Debug.WriteLine(
-            //      "[DownloadManager] " + e.Action +
-            //      " -> New items: " + (e.NewItems?.Count ?? 0) +
-            //      " at " + e.NewStartingIndex +
-            //      " || Old items: " + (e.OldItems?.Count ?? 0) +
-            //      " at " + e.OldStartingIndex
-            //  );
+
         }
-        private string InstaUrlFormat = "https://www.instagram.com/{0}/?__a=1";
         private readonly IMvxNavigationService navigationService;
         private string url = string.Empty;
-        public string Url
+      
+
+
+        private MvxObservableCollection<Country> countriesList;
+        public MvxObservableCollection<Country> CountriesList
         {
-            get => url;
+            get => countriesList;
             set
             {
 
-                url = value;
-                RaisePropertyChanged(nameof(Url));
+                countriesList = value;
+                RaisePropertyChanged(nameof(CountriesList));
 
             }
         }
 
-        private bool showTheImage = false;
-        public bool ShowTheImage
-        {
-            get => showTheImage;
-            set
-            {
 
-                showTheImage = value;
-                RaisePropertyChanged(nameof(ShowTheImage));
-
-            }
-        }
-        private string picUrl = string.Empty;
-        public string PicUrl
-        {
-            get => picUrl;
-            set
-            {
-
-                picUrl = value;
-                RaisePropertyChanged(nameof(PicUrl));
-
-            }
-        }
-
-        private bool showImage = false;
-        public bool ShowImage
-        {
-            get => showImage;
-            set
-            {
-
-                showImage = value;
-                RaisePropertyChanged(nameof(ShowImage));
-
-            }
-        }
         private GetData getData;
 
-        private void CloseImagePopup()
-        {
-            ShowTheImage = false;
-        }
-        private void DontCloseImagePopup()
-        {
-            //ShowTheImage = false;
-        }
-        public ICommand DontClose { get; set; }
 
-        public ICommand OpenProfile { get; set; }
 
-        public ICommand CloseImage { get; set; }
-  
-        
+        public async Task GetCountries()
+        {
+            try
+            {
+                url = "https://restcountries.eu/rest/v2/all";
+                List<Country> Result = await getData.FetchAllCountries(url);
+                if (Result != null)
+                {
+                    foreach (var item in Result)
+                    {
+                        item.FlagUrl = item.Flag.AbsoluteUri;
+                        if(item.Currencies!=null && item.Currencies.Count>0)
+                        item.Currency = item.Currencies[0].NameCurrency;
+                        CountriesList.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+
         public override void ViewAppeared()
         {
 
             base.ViewAppeared();
         }
 
-    }
+        public async override void Prepare()
+        {
+            base.Prepare();
+            CountriesList = new MvxObservableCollection<Country>() { };
+            await GetCountries();
+        }
 
+    }
 }

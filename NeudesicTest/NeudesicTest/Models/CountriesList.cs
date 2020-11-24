@@ -8,7 +8,7 @@ namespace NeudesicTest.Models
     {
         public List<Country> CountryList { get; set; }
 
-
+       
     }
     public partial class Country
     {
@@ -24,8 +24,8 @@ namespace NeudesicTest.Models
         [JsonProperty("alpha3Code")]
         public string Alpha3Code { get; set; }
 
-        [JsonProperty("callingCodes")]
-        public List<long> CallingCodes { get; set; }
+        //[JsonProperty("callingCodes")]
+        //public List<long> CallingCodes { get; set; }
 
         [JsonProperty("capital")]
         public string Capital { get; set; }
@@ -48,11 +48,11 @@ namespace NeudesicTest.Models
         [JsonProperty("demonym")]
         public string Demonym { get; set; }
 
-        [JsonProperty("area")]
-        public long Area { get; set; }
+        //[JsonProperty("area")]
+        //public long Area { get; set; }
 
-        [JsonProperty("gini")]
-        public double Gini { get; set; }
+        //[JsonProperty("gini")]
+        //public double Gini { get; set; }
 
       //  [JsonProperty("timezones")]
         //public string[] Timezones { get; set; }
@@ -68,6 +68,8 @@ namespace NeudesicTest.Models
 
         [JsonProperty("currencies")]
         public List<Currency> Currencies { get; set; }
+        public string Currency { get; set; }
+
 
         [JsonProperty("languages")]
         public List<Language> Languages { get; set; }
@@ -77,6 +79,7 @@ namespace NeudesicTest.Models
 
         [JsonProperty("flag")]
         public Uri Flag { get; set; }
+        public string FlagUrl { get; set; }
 
         [JsonProperty("regionalBlocs")]
         public List<RegionalBloc> RegionalBlocs { get; set; }
@@ -88,13 +91,13 @@ namespace NeudesicTest.Models
     public partial class Currency
     {
         [JsonProperty("code")]
-        public string Code { get; set; }
+        public string CodeCurrency { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string NameCurrency { get; set; }
 
         [JsonProperty("symbol")]
-        public string Symbol { get; set; }
+        public string SymbolCurrency { get; set; }
     }
 
     public partial class Language

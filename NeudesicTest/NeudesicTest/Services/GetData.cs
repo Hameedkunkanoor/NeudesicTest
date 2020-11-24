@@ -1,5 +1,6 @@
 ﻿using NeudesicTest.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NeudesicTest.Services
@@ -14,18 +15,17 @@ namespace NeudesicTest.Services
         {
             restService = new RestService();
         }
-        public async Task<CountriesList> FetchAllCountries(string url)
+        public async Task<List<Country>> FetchAllCountries(string url)
         {
             try
             {
-                var Profileurl = url;
-                var result = await restService.GetAsync<CountriesList>(url);
+                var result = await restService.GetAsync<List<Country>>(url);
                 return result;
             }
 
             catch (Exception)
             {
-                return new CountriesList
+                return new List<Country>
                 {
 
                 };
