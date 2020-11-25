@@ -7,8 +7,6 @@ namespace NeudesicTest.Models
     public class CountriesList
     {
         public List<Country> CountryList { get; set; }
-
-       
     }
     public partial class Country
     {

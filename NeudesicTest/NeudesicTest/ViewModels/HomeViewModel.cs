@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using NeudesicTest.Models;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using MvvmCross.Commands;
 
 namespace NeudesicTest.ViewModels
 {
@@ -44,8 +45,23 @@ namespace NeudesicTest.ViewModels
 
         private GetData getData;
 
+        
 
-
+         public IMvxCommand SelectedCountry => new MvxCommand<Country>(SelectedCountryEvent);
+        /// <summary>
+        /// Navigation to the COuntry details page.
+        /// </summary>
+        /// <param name="workListItem">Work list item.</param>
+        private void SelectedCountryEvent(Country country)
+        {
+            try { 
+            navigationService.Navigate<CountryDetailsViewModel, string>(country.Alpha3Code);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+        }
         public async Task GetCountries()
         {
             try

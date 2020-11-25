@@ -32,11 +32,10 @@ namespace NeudesicTest.Services
             }
         }
 
-        public async Task<CountryDetails> FetchInstaPic(string url)
+        public async Task<CountryDetails> FetchCountryDetails(string url)
         {
             try
             {
-                var Profileurl = url;
                 var result = await restService.GetAsync<CountryDetails>(url);
                 return result;
             }
