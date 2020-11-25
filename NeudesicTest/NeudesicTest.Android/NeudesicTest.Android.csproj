@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -106,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NeudesicTest\NeudesicTest.csproj">
-      <Project>{A1277735-DFA6-46EF-B1DA-D64268AC9576}</Project>
+      <Project>{22DFD84D-A80B-41FD-BA5F-F18ACBA7CA97}</Project>
       <Name>NeudesicTest</Name>
     </ProjectReference>
   </ItemGroup>
