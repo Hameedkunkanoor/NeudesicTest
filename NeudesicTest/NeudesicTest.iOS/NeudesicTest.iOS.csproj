@@ -138,8 +138,18 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\NeudesicTest\NeudesicTest.csproj">
-      <Project>{A1277735-DFA6-46EF-B1DA-D64268AC9576}</Project>
+      <Project>{22DFD84D-A80B-41FD-BA5F-F18ACBA7CA97}</Project>
       <Name>NeudesicTest</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\back_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back_icon%402x.png" />
+    <BundleResource Include="Resources\back_icon%403x.png" />
+    <BundleResource Include="Resources\arrow_right.png" />
+    <BundleResource Include="Resources\arrow_right%402x.png" />
+    <BundleResource Include="Resources\arrow_right%403x.png" />
   </ItemGroup>
 </Project>

@@ -21,9 +21,31 @@
             <StackLayout Grid.Row="0" HorizontalOptions="Center"
                              VerticalOptions="CenterAndExpand"
                              BackgroundColor="White">
-                <Label FontSize="24" 
-                       TextColor="Orange" 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label  FontSize="24" 
+                       TextColor="Orange"
+                       Grid.Column="1"
+                            HorizontalOptions="Center"
                        Text="{Binding CountryName,Mode=TwoWay}"/>
+                    <Button Grid.Column="0"
+                            Margin="5,0,0,0"
+                            Command="{Binding CloseDetailsPage}"
+                             HorizontalOptions="Start"
+                             VerticalOptions="FillAndExpand"
+                             BackgroundColor="White"  
+                             ImageSource="back_icon.png"/>
+                    <Button Grid.Column="2"
+                            IsVisible="False"
+                             HorizontalOptions="Start"
+                             VerticalOptions="FillAndExpand"
+                             BackgroundColor="White"  
+                             ImageSource="back_icon.png"/>
+                </Grid>
                 <BoxView HeightRequest="2" 
                          BackgroundColor="Gray" 
                          HorizontalOptions="FillAndExpand"
@@ -83,9 +105,9 @@
                                  Padding="10,10,10,10">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.48*"/>
-                                <ColumnDefinition Width="0.01*"/>
-                                <ColumnDefinition Width="0.48*"/>
+                                <ColumnDefinition Width="0.43*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.43*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" 
                                    TextColor="DeepSkyBlue"
@@ -94,7 +116,7 @@
                             <Label Grid.Column="1"
                                      TextColor="DeepSkyBlue"
                                     FontSize="24"
-                                   Text=":"/>
+                                   Text=" : "/>
                             <Label  Grid.Column="2"
                                     TextColor="DeepSkyBlue"
                                     FontSize="24"
@@ -214,8 +236,8 @@
                                     HorizontalTextAlignment="Center"
                                    Text="{Binding SubRegion,Mode=TwoWay}"/>
                         </Grid>
-                     
-                        
+
+
                     </StackLayout>
                 </Frame>
             </ScrollView>

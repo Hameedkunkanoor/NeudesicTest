@@ -13,11 +13,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.9*"/>
-               
+
             </Grid.RowDefinitions>
             <Label Text="Countries" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" TextColor="Orange"/>
             <BoxView BackgroundColor="Gray" HeightRequest="3" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
-                     <ScrollView VerticalOptions="FillAndExpand"
+            <ScrollView VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="5,0,5,0" Grid.Row="1"
                   >
@@ -46,7 +46,8 @@
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.3*"/>
-                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                        <ColumnDefinition Width="0.1*"/>
                                     </Grid.ColumnDefinitions>
                                     <forms:SvgCachedImage  IsVisible="True" 
                      Grid.Column="0"
@@ -62,7 +63,7 @@
                         RetryDelay= "200"
                         DownsampleToViewSize = "true"
 />
-                                   
+
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="0.5*"/>
@@ -97,6 +98,12 @@
                                             </Label.FormattedText>
                                         </Label>
                                     </Grid>
+                                    <Button ImageSource="arrow_right.png"
+                                            Grid.Column="2"
+                                               Command="{Binding BindingContext.SelectedCountry,  
+                                                              Source={x:Reference CountriesList}}"
+                                                    CommandParameter ="{Binding .}"
+                                            />
                                     <Button Grid.Row="0" 
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
@@ -117,7 +124,7 @@
             </ScrollView>
 
 
-          
+
         </Grid>
 
     </mvx:MvxContentView>

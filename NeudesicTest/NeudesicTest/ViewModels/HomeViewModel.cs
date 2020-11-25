@@ -26,7 +26,7 @@ namespace NeudesicTest.ViewModels
         }
         private readonly IMvxNavigationService navigationService;
         private string url = string.Empty;
-      
+
 
 
         private MvxObservableCollection<Country> countriesList;
@@ -45,17 +45,18 @@ namespace NeudesicTest.ViewModels
 
         private GetData getData;
 
-        
 
-         public IMvxCommand SelectedCountry => new MvxCommand<Country>(SelectedCountryEvent);
+
+        public IMvxCommand SelectedCountry => new MvxCommand<Country>(SelectedCountryEvent);
         /// <summary>
-        /// Navigation to the COuntry details page.
+        /// Navigation to the Country details page.
         /// </summary>
-        /// <param name="workListItem">Work list item.</param>
+        /// <param name="Country">Country item.</param>
         private void SelectedCountryEvent(Country country)
         {
-            try { 
-            navigationService.Navigate<CountryDetailsViewModel, string>(country.Alpha3Code);
+            try
+            {
+                navigationService.Navigate<CountryDetailsViewModel, string>(country.Alpha3Code);
             }
             catch (Exception e)
             {
@@ -73,8 +74,8 @@ namespace NeudesicTest.ViewModels
                     foreach (var item in Result)
                     {
                         item.FlagUrl = item.Flag.AbsoluteUri;
-                        if(item.Currencies!=null && item.Currencies.Count>0)
-                        item.Currency = item.Currencies[0].NameCurrency;
+                        if (item.Currencies != null && item.Currencies.Count > 0)
+                            item.Currency = item.Currencies[0].NameCurrency;
                         CountriesList.Add(item);
                     }
                 }

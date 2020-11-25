@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using NeudesicTest.Models;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using MvvmCross.Commands;
 
 namespace NeudesicTest.ViewModels
 {
@@ -40,7 +41,7 @@ namespace NeudesicTest.ViewModels
 
             }
         }
-        
+
         private string capital;
         public string Capital
         {
@@ -163,8 +164,8 @@ namespace NeudesicTest.ViewModels
 
             }
         }
-        
-              private string gini;
+
+        private string gini;
         public string Gini
         {
             get => gini;
@@ -180,11 +181,22 @@ namespace NeudesicTest.ViewModels
 
         private string alpha3Code = string.Empty;
 
+
+
+        public IMvxCommand CloseDetailsPage => new MvxCommand(CloseDetailsPageEvent);
+        /// <summary>
+        /// Navigation to the COuntry details page.
+        /// </summary>
+        /// <param name="workListItem">Work list item.</param>
+        private void CloseDetailsPageEvent()
+        {
+            navigationService.Close(this);
+        }
         public async Task GetCountryDetails()
         {
             try
             {
-                url =$"{"https://restcountries.eu/rest/v2/alpha/"}{alpha3Code}";
+                url = $"{"https://restcountries.eu/rest/v2/alpha/"}{alpha3Code}";
                 CountryDetails Result = await getData.FetchCountryDetails(url);
                 if (Result != null)
                 {
@@ -223,7 +235,7 @@ namespace NeudesicTest.ViewModels
                 alpha3Code = parameter;
                 await GetCountryDetails();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
             }
